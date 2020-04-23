@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './searchBar.css';
 
-function SearchBar (props) {
+function SearchBar ({ getTracks }) {
 
     const [input, setInput] = useState('');
 
     const handleTrackChange = (e) => {
-        setInput(e.target.value)
+        setInput(e.target.value);
+        getTracks(e.target.value);
     }
-
-    useEffect(() => {
-        props.getTracks(input)
-    }, [input]);
 
     return (
         <div className='search_bar_container'>
