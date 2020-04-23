@@ -11,14 +11,14 @@ function SearchBar (props) {
 
     useEffect(() => {
         props.getTracks(input)
-    });
+    }, [input]);
 
     return (
         <div className='search_bar_container'>
             <form className='search_bar'>
-                <input 
-                    className='input_field' 
-                    type='text' 
+                <input
+                    className='input_field'
+                    type='text'
                     value={input}
                     onChange={handleTrackChange}
                     placeholder='Search tracks'>
