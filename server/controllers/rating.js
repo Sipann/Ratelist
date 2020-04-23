@@ -56,6 +56,7 @@ async function insertOrUpdateRating (req, res) {
       }
     );
     res.status(201);
+    res.json(updatedRating);
   } catch (error) {
     console.log(error); //eslint-disable-line
     res.sendStatus(500);
