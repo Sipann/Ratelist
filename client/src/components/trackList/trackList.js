@@ -3,13 +3,13 @@ import './trackList.css'
 import TrackItem from '../trackItem/trackItem';
 
 function TrackList (props) {
-    let tracks = props.tracks.tracks.items
-    return (
+  let tracks = props.tracks.tracks.items
+  return (
     <div>
-        {tracks.map((track, index) => 
-            <TrackItem 
-            track={track}
-            key={index}
+      {tracks.map((track, index) =>
+        <TrackItem
+          track={track}
+          key={index}
         />)}
     </div>)
 }

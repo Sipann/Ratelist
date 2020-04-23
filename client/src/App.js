@@ -8,15 +8,15 @@ import {
   Route,
 } from "react-router-dom";
 
-function App() {
+function App () {
 
   return (
     <div className="App">
       <Router>
-        <Route exact path='/' component={LandingPage}/>
-        <Route exact path='/credentials' component={Credentials}/>
-        <Route exact path='/home' component={HomePage}/>
-        <Route exact path='/searchRate' component={SearchRate}/>
+        <Route exact path='/' component={LandingPage} />
+        <Route exact path='/credentials' component={Credentials} />
+        <Route exact path='/home' component={HomePage} />
+        <Route exact path='/searchRate' component={SearchRate} />
       </Router>
     </div>
   );
