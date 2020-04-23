@@ -21,10 +21,10 @@ const db = new Sequelize('ratelist', process.env.DB_USERNAME, process.env.DB_PAS
 db
   .authenticate()
   .then(() => {
-    console.log('** database connected **');
+    console.log('** database connected **');              // eslint-disable-line no-console
   })
   .catch(err => {
-    console.error('! database connection error !', err);
+    console.error('! database connection error !', err);  // eslint-disable-line no-console
   });
 
 //readDirSync reads files in models folder
