@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { InsertRating } from '../../services/dbService'
-import './trackItem.css';
+
+import { InsertRating } from '../../services/dbService';
+
+import './TrackItem.css';
+
 
 const userName = localStorage.getItem('userName')
 

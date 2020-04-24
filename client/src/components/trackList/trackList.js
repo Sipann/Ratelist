@@ -1,6 +1,8 @@
 import React from 'react';
-import './trackList.css'
-import TrackItem from '../trackItem/trackItem';
+
+import TrackItem from '../TrackItem/TrackItem';
+import './TrackList.css';
+
 
 function TrackList (props) {
   let tracks = props.tracks.tracks.items

@@ -1,6 +1,8 @@
 import React from 'react';
-import './ratedList.css'
-import RatedItem from '../ratedItem/ratedItem';
+
+import RatedItem from '../RatedItem/RatedItem';
+import './RatedList.css';
+
 
 function RatedList (props) {
   let tracks = props.ratedTracks.tracks

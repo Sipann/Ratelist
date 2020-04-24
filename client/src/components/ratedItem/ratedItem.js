@@ -1,5 +1,7 @@
 import React from 'react';
-import './ratedItem.css';
+
+import './RatedItem.css';
+
 
 function RatedItem (props) {
 

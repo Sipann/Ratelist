@@ -7,7 +7,7 @@ body {
 }
 
 .home_header_container {
-    z-index: 2;    
+    z-index: 2;
     background-color: #282c34;
     width: 100%;
     height: 100px;
@@ -32,8 +32,8 @@ body {
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 20px;
-    background-color: rgb(241, 112, 123);  
-    border: 1px solid white;   
+    background-color: rgb(241, 112, 123);
+    border: 1px solid white;
     text-decoration: none;
     font-size: 15px;
     color: white
@@ -70,7 +70,7 @@ body {
 
 .soulmates_button_:hover {
     border: 1px solid rgb(241, 112, 123);
-    color: rgb(241, 112, 123) 
+    color: rgb(241, 112, 123)
 }
 
 .ratings_container {

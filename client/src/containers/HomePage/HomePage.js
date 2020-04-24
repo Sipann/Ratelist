@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { GetRatingsByUser } from '../services/dbService';
-import { getTracks } from '../services/spotifyService';
-import RatedList from '../components/ratedList/ratedList';
-import './home.css';
+
+import { GetRatingsByUser } from '../../services/dbService';
+import { getTracks } from '../../services/spotifyService';
+
+import RatedList from '../../components/RatedList/RatedList';
+
+import './HomePage.css';
 
 function HomePage () {
 
@@ -49,4 +52,4 @@ function HomePage () {
   );
 }
 
-export default HomePage
+export default HomePage;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './searchBar.css';
+
+import './SearchBar.css';
 
 function SearchBar ({ getTracks }) {
 

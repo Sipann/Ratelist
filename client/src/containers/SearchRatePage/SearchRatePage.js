@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { searchTracks } from '../services/spotifyService';
-import TrackList from '../components/trackList/trackList';
-import SearchBar from '../components/searchBar/searchBar';
-import './searchRate.css';
+
+import { searchTracks } from '../../services/spotifyService';
+
+import SearchBar from '../../components/SearchBar/SearchBar';
+import TrackList from '../../components/TrackList/TrackList';
+
+import './SearchRatePage.css';
+
 
 function SearchRate () {
 
@@ -36,4 +40,4 @@ function SearchRate () {
   );
 }
 
-export default SearchRate
+export default SearchRate;

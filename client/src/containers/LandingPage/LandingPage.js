@@ -1,5 +1,6 @@
 import React from 'react';
-import './landing.css'
+
+import './LandingPage.css';
 
 function LandingPage () {
   return (
@@ -15,4 +16,4 @@ function LandingPage () {
   );
 }
 
-export default LandingPage
+export default LandingPage;
