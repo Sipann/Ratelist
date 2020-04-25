@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 import '@testing-library/jest-dom';
 
 import RatedList from './RatedList';
-import { mockRatedTracks } from './RatedListMockData';
+import { mockRatedTracks } from '../../__mocks__/SpotifyTracksItems';
 
 
 // smoke test

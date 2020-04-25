@@ -1,4 +1,4 @@
-export const mockedData = {
+export const fakeTrack = {
   "album": {
     "album_type": "album",
     "artists": [{
