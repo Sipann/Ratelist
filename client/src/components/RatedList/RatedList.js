@@ -5,7 +5,7 @@ import './RatedList.css';
 
 
 function RatedList (props) {
-  let tracks = props.ratedTracks.tracks
+  const tracks = props.ratedTracks.tracks;
   return (
     <div className='ratedList' data-testid="ratedList">
       {tracks.map((track, index) =>
@@ -13,7 +13,7 @@ function RatedList (props) {
           track={track}
           key={index}
         />)}
-    </div>)
+    </div>);
 }
 
 export default RatedList;
