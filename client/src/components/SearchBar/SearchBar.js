@@ -15,6 +15,7 @@ function SearchBar ({ getTracks }) {
     <div className='search_bar_container'>
       <form className='search_bar'>
         <input
+          data-testid="inputField"
           className='input_field'
           type='text'
           value={input}
@@ -23,7 +24,7 @@ function SearchBar ({ getTracks }) {
         </input>
       </form>
     </div>
-  )
+  );
 }
 
 export default SearchBar;
