@@ -7,7 +7,7 @@ import './RatedList.css';
 function RatedList (props) {
   let tracks = props.ratedTracks.tracks
   return (
-    <div className='ratedList'>
+    <div className='ratedList' data-testid="ratedList">
       {tracks.map((track, index) =>
         <RatedItem
           track={track}
