@@ -4,20 +4,15 @@ import { InsertRating } from '../../services/dbService';
 
 import './TrackItem.css';
 
-
-const userName = localStorage.getItem('userName')
-
 function TrackItem (props) {
 
   const [color, setColor] = useState('rgb(73, 162, 218)');
-  // const [buttonText, setButtonText] = useState('Rate track');
   const [borderColor, SetBorderColor] = useState('1px solid white')
   const [trackId, setTrackId] = useState('');
   const [rating, setRating] = useState('Submit Rating');
 
   function OnClickEvent () {
-    setColor("rgb(103, 182, 109)");
-    // setButtonText('Rating saved')
+    setColor('rgb(103, 182, 109)');
     SetBorderColor('1px solid rgb(103, 182, 109)');
   }
 
@@ -29,6 +24,7 @@ function TrackItem (props) {
 
   function handleSubmit (e) {
     e && e.preventDefault();
+    const userName = localStorage.getItem('userName');
     if (trackId && rating && userName) InsertRating({ userName, trackId, rating });
     setTrackId('');
     setRating('Rating stored');
@@ -52,6 +48,7 @@ function TrackItem (props) {
               id='rating'
               min='0'
               max='10'
+              data-testid="inputField"
               data-trackid={props.track.id}
               onChange={handleChange}
             ></input>
@@ -59,12 +56,13 @@ function TrackItem (props) {
               style={{ background: color }}
               type='submit'
               className='rate_button'
+              data-testid="submitButton"
               onClick={() => { OnClickEvent() }}>{rating}</button>
           </form>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default TrackItem;

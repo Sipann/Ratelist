@@ -1,0 +1,37 @@
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react'
+import '@testing-library/jest-dom';
+
+import TrackItem from './TrackItem';
+import dbService from '../../services/dbService';
+
+import { mockedData } from './TrackItemMockData';
+
+
+// smoke test
+it('renders without crashing', () => {
+  render(<TrackItem track={mockedData} key={0} />);
+});
+
+it('sets the correct state rating value when cursor is moved', () => {
+  const { getByTestId } = render(<TrackItem track={mockedData} key={0} />);
+  fireEvent.change(getByTestId('inputField'), { target: { value: 8 } });
+  expect(getByTestId('submitButton')).toHaveTextContent(8);
+});
+
+it('sets the trackId when cursor is moved', () => {
+  const { getByTestId } = render(<TrackItem track={mockedData} key={0} />);
+  fireEvent.change(getByTestId('inputField'), { target: { value: 8 } });
+  const trackIdAttr = getByTestId('inputField').getAttribute('data-trackid');
+  expect(trackIdAttr).toBeTruthy();
+});
+
+it('calls insertRating when called with proper parameters', () => {
+  dbService.InsertRating = jest.fn();
+  localStorage.setItem('userName', 'foo')
+  const { container, getByTestId } = render(<TrackItem track={mockedData} key={0} />);
+  fireEvent.change(getByTestId('inputField'), { target: { value: 8 } });
+  fireEvent.submit(container.querySelector('form'));
+  expect(dbService.InsertRating).toHaveBeenCalled();
+  localStorage.clear()
+});
