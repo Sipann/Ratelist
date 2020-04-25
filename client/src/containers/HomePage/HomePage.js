@@ -12,8 +12,8 @@ function HomePage () {
   const [trackRatings, setTrackRatings] = useState([]);
   const [rateList, setRateList] = useState(null);
 
-  async function getTrackIds () {
-
+  async function getTracksMetadata () {
+    console.log('getTracksMetadata is being called form home page');
     const res = await GetRatingsByUser();
     const trackIds = [];
     const trackRatings = [];
@@ -24,7 +24,9 @@ function HomePage () {
     })
     setTrackRatings(trackRatings); //reversing ratings to match reversed trackIds array.
 
+    console.log('trackIds', trackIds);
     const spotifyTrackList = await getTracks(trackIds);
+    console.log('spotifyTrackList', spotifyTrackList);
     for (let i = 0; i < trackRatings.length; i++) {
       spotifyTrackList.tracks[i].rating = trackRatings[i]; //insert track rating to each track on spotify res obj.
     }
@@ -33,7 +35,7 @@ function HomePage () {
   }
 
   useEffect(() => {
-    getTrackIds()
+    getTracksMetadata()
   }, []);
 
   return (
