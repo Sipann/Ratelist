@@ -46,7 +46,7 @@ function HomePage () {
         </nav>
       </header>
       <div className='ratings_container'>
-        {(rateList) && <RatedList className='rated_list' ratedTracks={rateList} trackRatings={trackRatings} />}
+        {(rateList) && <RatedList className='rated_list' ratedTracks={rateList} />}
       </div>
     </div>
   );
