@@ -5,7 +5,6 @@ import './RatedItem.css';
 
 function RatedItem (props) {
 
-  console.log(props)
   return (
     <div>
       <div className='rating_container'>
