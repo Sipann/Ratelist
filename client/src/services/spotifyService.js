@@ -33,7 +33,7 @@ function spotifyRequest (endpoint, options) {
         .catch((err) => {
             console.log(err);
             console.log(`${err.message} fetching /${endpoint}`)
-        }); 
+        });
 }
 
 module.exports =  {searchTracks, getTracks}
