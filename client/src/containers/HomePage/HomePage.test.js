@@ -4,24 +4,15 @@ import '@testing-library/jest-dom';
 import dbService from '../../services/dbService';
 import spotifyService from '../../services/spotifyService';
 import { mockRatedTracks } from '../../__mocks__/SpotifyTracksItems';
-import { expectedMockRatedTracks } from '../../__mocks__/ExpectedRateList';
 
 import HomePage from './HomePage';
 
 // smoke test
-// it('renders without crashing', () => {
-//   render(<HomePage />);
-// });
+it('renders without crashing', () => {
+  render(<HomePage />);
+});
 
 it('renders without crashing', async () => {
-  // window['getRatingsByUser'] = jest.fn(() => {
-  //   console.log('it is called from the mock');
-  // });
-
-  // const getRatingsByUser = jest.fn(() => {
-  //   console.log('it is called from the mock');
-  // });
-
  dbService.getRatingsByUser = jest.fn(() => {
   return new Promise(function(resolve, reject) {
       resolve([
