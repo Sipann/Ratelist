@@ -14,12 +14,9 @@ function SearchRate () {
 
   async function getTracks (input) {
     const res = await searchTracks(input);
+    console.log('res', res);
     setTracks(res);
   }
-
-  useEffect(() => {
-    getTracks()
-  }, []);
 
   return (
     <div className="searchRate">
@@ -30,11 +27,11 @@ function SearchRate () {
           <a className='soulmates_button' href="/soulmates">Soulmates</a>
         </nav>
         <div className='search_bar'>
-          <SearchBar className='search_input' getTracks={getTracks} />
+          <SearchBar data-testid="searchBar" className='search_input' getTracks={getTracks} />
         </div>
       </header>
       <div className='tracks'>
-        {tracks && <TrackList tracks={tracks} />}
+        {tracks && <TrackList data-testid="trackList" tracks={tracks} />}
       </div>
     </div>
   );
