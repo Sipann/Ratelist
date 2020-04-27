@@ -6,7 +6,7 @@ function GetAllRatings () {
     return serverRequest ('/ratings')
 }
 
-function GetRatingsByUser () {
+function getRatingsByUser () {
     return serverRequest (`/ratings/${userName}`)
 }
 
@@ -27,8 +27,7 @@ function serverRequest (endpoint, options) {
         .catch((err) => {
             console.log(err);
             console.log(`${err.message} fetching /${endpoint}`)
-        }); 
+        });
 }
 
-module.exports = {GetAllRatings, InsertRating, GetRatingsByUser}
-    
+module.exports = {GetAllRatings, InsertRating, getRatingsByUser}

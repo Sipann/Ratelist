@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { GetRatingsByUser } from '../../services/dbService';
+import { getRatingsByUser } from '../../services/dbService';
 import { getTracks } from '../../services/spotifyService';
 
 import RatedList from '../../components/RatedList/RatedList';
@@ -8,27 +8,15 @@ import RatedList from '../../components/RatedList/RatedList';
 import './HomePage.css';
 
 function HomePage () {
-
-  const [trackRatings, setTrackRatings] = useState([]);
   const [rateList, setRateList] = useState(null);
 
   async function getTracksMetadata () {
-    console.log('getTracksMetadata is being called form home page');
-    const res = await GetRatingsByUser();
-    const trackIds = [];
-    const trackRatings = [];
+    const res = await getRatingsByUser();
+    const spotifyTrackList = await getTracks(res.map(i => i.trackId));
 
-    res.forEach((track) => {
-      trackIds.push(track.trackId)
-      trackRatings.push(track.rating)
-    })
-    setTrackRatings(trackRatings); //reversing ratings to match reversed trackIds array.
-
-    console.log('trackIds', trackIds);
-    const spotifyTrackList = await getTracks(trackIds);
-    console.log('spotifyTrackList', spotifyTrackList);
-    for (let i = 0; i < trackRatings.length; i++) {
-      spotifyTrackList.tracks[i].rating = trackRatings[i]; //insert track rating to each track on spotify res obj.
+    for (let i = 0; i < spotifyTrackList.tracks.length; i++) {
+      const obj = res.find(track => track.trackId === spotifyTrackList.tracks[i].id);
+      spotifyTrackList.tracks[i].rating = obj.rating;
     }
 
     setRateList(spotifyTrackList);
