@@ -1,6 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
-
+import { Redirect, BrowserRouter } from 'react-router-dom';
 
 function Credentials () {
 
@@ -14,7 +13,9 @@ function Credentials () {
   localStorage.setItem('userName', userName);
 
   return (
-    <Redirect to="/searchRate" />
+    <BrowserRouter>
+      <Redirect to="/searchRate" />
+    </BrowserRouter>
   );
 
 }
