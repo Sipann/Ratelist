@@ -67,8 +67,25 @@ async function insertOrUpdateRating (req, res) {
   }
 }
 
+async function deleteRating (req, res) {
+  try {
+    await db.Rating.destroy({
+      where: {
+        userName: req.body.userName,
+        trackId: req.body.trackId
+      },
+    });
+    res.status(200);
+    res.json({ userName: req.body.userName, trackId: req.body.trackId });
+  } catch (error) {
+    console.log(error); //eslint-disable-line
+    res.sendStatus(500);
+  }
+}
+
 module.exports = {
   getAllRatings,
   getRatedSongsByUser,
   insertOrUpdateRating,
+  deleteRating,
 };
