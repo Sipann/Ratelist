@@ -1,5 +1,7 @@
 const SpotifyStrategy = require('passport-spotify').Strategy;
 const passport = require('passport');
+const fetch = require('node-fetch');
+
 const db = require('../models');
 require('dotenv').config();
 
@@ -20,12 +22,12 @@ passport.use(
     },
     function (accessToken, refreshToken, expires_in, profile, done) {
       process.nextTick(async function () { // if user does not exist, user stored in db.Users
-        const userExists = await db.User.findOne({
-          where: {
-            userName: profile.username
-          },
+        const userExists = await fetch(`${process.env.SERVER_HOST}:${process.env.SERVER_PORT}/users/${profile.username}`);
+        if (userExists === null) await fetch(`${process.env.SERVER_HOST}:${process.env.SERVER_PORT}/users`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userName: profile.username })
         });
-        if (userExists === null) db.User.create({ userName: profile.username });
         return done(null, { profile, accessToken, refreshToken, expires_in });
       });
     }
