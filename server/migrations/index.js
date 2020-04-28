@@ -4,7 +4,9 @@ module.exports = {
       resolve(true);
     });
   },
-  down: (queryInterface) => {
-    return queryInterface.bulkDelete('"Ratings"', null, {});
+  down: async (queryInterface) => {
+    await queryInterface.bulkDelete('"Ratings"', null, {});
+    await queryInterface.bulkDelete('"Users"', null, {});
+    return true;
   }
 };

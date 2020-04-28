@@ -126,3 +126,44 @@ describe('/ratings routes', () => {
   });
 
 });
+
+describe('/users routes', () => {
+  beforeEach(async () => {
+    const fakeUser1 = {
+      userName: 'bean_123',
+    };
+
+    const fakeUser2 = {
+      userName: 'pumpkin_456',
+    };
+
+    const fakeUser3 = {
+      userName: 'choupinette_789',
+    };
+
+    await agent.post('/users').send(fakeUser1);
+    await agent.post('/users').send(fakeUser2);
+    await agent.post('/users').send(fakeUser3);
+  });
+
+  afterEach(async () => {
+    await agent.delete('/users').send({ userName: 'bean_123'});
+    await agent.delete('/users').send({ userName: 'pumpkin_456'});
+    await agent.delete('/users').send({ userName: 'choupinette_789'});
+  });
+
+  it('should retrieve all users', async () => {
+    const res = await agent.get('/users');
+    expect(res.statusCode).toEqual(200);
+    expect(res.body).toHaveLength(3);
+  });
+
+  it('should create new users', async () => {
+    const newUser = { userName: 'pepicek_098' };
+    const res = await agent
+      .post('/users')
+      .send(newUser);
+    expect(res.statusCode).toEqual(201);
+    expect(res.body).toHaveProperty('userName');
+  });
+});
