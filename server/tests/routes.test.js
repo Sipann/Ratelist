@@ -14,7 +14,6 @@ beforeEach((done) => {
   app.use(router);
 
   server = app.listen(4000, (err) => {
-    console.log('running on port 4000');
     if (err) return done(err);
     agent = request.agent(server);
     done();
@@ -92,5 +91,31 @@ describe('/ratings routes', () => {
     expect(res.body).toHaveProperty('rating');
   });
 
+  it('should update a rating', async () => {
+    const updatedRating = {
+      userName: 'yy6sake8jqanxinb3yoxa44xw',
+      trackId: '1HFiThfrSDT9byxv6cw8Tm',
+      rating: 3,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+    const res = await agent
+      .post('/ratings')
+      .send(updatedRating);
+    expect(res.statusCode).toEqual(201);
+
+  });
+
+  it('should delete a rating', async () => {
+    const deleted = {
+      userName: 'yy6sake8jqanxinb3yoxfalse',
+      trackId: '1h2xVEoJORqrg71Hofalse'
+    };
+    const res = await agent
+      .delete('/ratings')
+      .send(deleted);
+    expect(res.statusCode).toEqual(200);
+
+  });
 
 });
