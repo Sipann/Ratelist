@@ -24,7 +24,23 @@ async function insertUser (req, res) {
   }
 }
 
+async function deleteUser (req, res) {
+  try {
+    await db.User.destroy({
+      where: {
+        userName: req.body.userName
+      },
+    });
+    res.status(200);
+    res.json({ userName: req.body.userName });
+  } catch (error) {
+    console.log(error); //eslint-disable-line
+    res.sendStatus(500);
+  }
+}
+
 module.exports = {
   getAllUsers,
   insertUser,
+  deleteUser
 };

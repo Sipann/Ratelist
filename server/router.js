@@ -25,6 +25,7 @@ router.get(
 router.get('/', (req, res) => res.send('This is working!'));
 router.get('/users', user.getAllUsers);
 router.post('/users', user.insertUser);
+router.delete('/users', user.deleteUser);
 
 router.get('/ratings', rating.getAllRatings);
 router.get('/ratings/:username', rating.getRatedSongsByUser);
