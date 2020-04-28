@@ -58,6 +58,14 @@ describe('/ratings routes', () => {
 
   });
 
+  afterEach(async () => {
+    await agent.delete('/ratings').send({ userName: 'yy6sake8jqanxinb3yoxa44xw', trackId: '1HFiThfrSDT9byxv6cw8Tm' });
+    await agent.delete('/ratings').send({ userName: 'yy6sake8jqanxinb3yoxa44xw', trackId: '1h2xVEoJORqrg71HocgqXd' });
+    await agent.delete('/ratings').send({ userName: 'yy6sake8jqanxinb3yoxfalse', trackId: '1h2xVEoJORqrg71Hofalse' });
+    await agent.delete('/ratings').send({ userName: 'yy6sake8jqanxinb3yoxfalse', trackId: '6sCYUYJkkqP5wJG4ccLGuA' });
+  });
+
+
   it('should get all ratings', async () => {
     const res = await agent.get('/ratings');
     expect(res.statusCode).toEqual(200);
@@ -115,7 +123,6 @@ describe('/ratings routes', () => {
       .delete('/ratings')
       .send(deleted);
     expect(res.statusCode).toEqual(200);
-
   });
 
 });
