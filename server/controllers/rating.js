@@ -40,23 +40,27 @@ async function insertOrUpdateRating (req, res) {
         trackId: req.body.trackId
       },
     });
-    if (!foundRating) {
+
+    if (foundRating) {
+      const updatedRating = await db.Rating.update(
+        { rating: req.body.rating },
+        {
+          where:
+          {
+            userName: req.body.userName,
+            trackId: req.body.trackId
+          }
+        }
+      );
+      res.status(201);
+      res.json(updatedRating);
+    }
+    else {
       const addedRating = await db.Rating.create({ userName: req.body.userName, trackId: req.body.trackId, rating: req.body.rating });
       res.status(201);
       res.json(addedRating);
     }
-    const updatedRating = await db.Rating.update(
-      { rating: req.body.rating },
-      {
-        where:
-        {
-          userName: req.body.userName,
-          trackId: req.body.trackId
-        }
-      }
-    );
-    res.status(201);
-    res.json(updatedRating);
+
   } catch (error) {
     console.log(error); //eslint-disable-line
     res.sendStatus(500);
