@@ -23,3 +23,17 @@ beforeEach((done) => {
 afterEach((done) => {
   return server && server.close(done);
 });
+
+
+describe('/ratings routes', () => {
+
+  it('should get all ratings', async () => {
+    const res = await agent.get('/ratings');
+    expect(res.statusCode).toEqual(200);
+    res.body.forEach(item => {
+      expect(item).toHaveProperty('rating');
+    });
+  });
+
+
+});
