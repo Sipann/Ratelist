@@ -5,10 +5,18 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 require('dotenv').config();
+// const envConfigs = require('../config');
+const envConfigs = require('../config/config');
+const env = process.env.NODE_ENV || 'development';
+const config = envConfigs[env];
 
-const db = new Sequelize('ratelist', process.env.DB_USERNAME, process.env.DB_PASSWORD, {
-  host: process.env.DB_HOST,
-  dialect: 'postgres',
+const db = new Sequelize(
+  config.DB_NAME,
+  config.DB_USERNAME,
+  config.DB_PASSWORD, {
+  host: config.DB_HOST,
+  dialect: config.DB_DIALECT,
+  logging: false,
 
   pool: {
     max: 5,

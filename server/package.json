@@ -4,7 +4,11 @@
   "description": "Rate tracks and create playlists on spotify",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "createtables": "cross-env NODE_ENV=test node index.js",
+    "migrate": "sequelize-cli db:migrate",
+    "migrate:reset": "sequelize-cli db:migrate:undo:all && npm run migrate",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --detectOpenHandles",
+    "pretest": "cross-env NODE_ENV=test npm run migrate:reset"
   },
   "author": "Gerard Soldevila",
   "license": "ISC",
@@ -21,6 +25,16 @@
     "sequelize": "^5.21.6"
   },
   "devDependencies": {
-    "nodemon": "^2.0.3"
+    "cross-env": "^7.0.2",
+    "jest": "^25.4.0",
+    "nodemon": "^2.0.3",
+    "sequelize-cli": "^5.5.1",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }
