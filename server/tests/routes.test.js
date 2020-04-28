@@ -158,6 +158,13 @@ describe('/users routes', () => {
     expect(res.body).toHaveLength(3);
   });
 
+  it('should retrieve a user', async () => {
+    const username = 'choupinette_789';
+    const res = await agent.get(`/users/${username}`);
+    expect(res.statusCode).toEqual(200);
+    expect(res.body).toHaveProperty('userName');
+  });
+
   it('should create new users', async () => {
     const newUser = { userName: 'pepicek_098' };
     const res = await agent
