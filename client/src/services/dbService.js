@@ -10,7 +10,7 @@ function getRatingsByUser () {
     return serverRequest (`/ratings/${userName}`)
 }
 
-function InsertRating (body) {
+function insertRating (body) {
     return serverRequest (`/ratings`, {
         method: 'POST',
         headers: {
@@ -30,4 +30,4 @@ function serverRequest (endpoint, options) {
         });
 }
 
-module.exports = {GetAllRatings, InsertRating, getRatingsByUser}
+module.exports = {GetAllRatings, insertRating, getRatingsByUser}

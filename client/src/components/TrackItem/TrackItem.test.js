@@ -27,11 +27,11 @@ it('sets the trackId when cursor is moved', () => {
 });
 
 it('calls insertRating when called with proper parameters', () => {
-  dbService.InsertRating = jest.fn();
+  dbService.insertRating = jest.fn();
   localStorage.setItem('userName', 'foo')
   const { container, getByTestId } = render(<TrackItem track={fakeTrack} key={0} />);
   fireEvent.change(getByTestId('inputField'), { target: { value: 8 } });
   fireEvent.submit(container.querySelector('form'));
-  expect(dbService.InsertRating).toHaveBeenCalled();
+  expect(dbService.insertRating).toHaveBeenCalled();
   localStorage.clear()
 });

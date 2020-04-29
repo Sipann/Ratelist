@@ -83,3 +83,7 @@ img {
 .rate_button:hover {
     cursor: pointer;
 }
+
+.rate_button.rate_button_disabled:hover {
+  cursor: not-allowed;
+}

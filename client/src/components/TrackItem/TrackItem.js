@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import classNames from 'classnames';
 
-import { InsertRating } from '../../services/dbService';
+import { insertRating } from '../../services/dbService';
 
 import './TrackItem.css';
 
@@ -9,7 +10,8 @@ function TrackItem (props) {
   const [color, setColor] = useState('rgb(73, 162, 218)');
   const [borderColor, SetBorderColor] = useState('1px solid white')
   const [trackId, setTrackId] = useState('');
-  const [rating, setRating] = useState('Submit Rating');
+  const [rating, setRating] = useState(null);
+  const [buttonLabel, setButtonLabel] = useState('Select Rating');
 
   function OnClickEvent () {
     setColor('rgb(103, 182, 109)');
@@ -18,6 +20,7 @@ function TrackItem (props) {
 
   const handleChange = (e) => {
     setRating(e.target.value);
+    setButtonLabel('Rate: ');
     setTrackId(e.target.getAttribute('data-trackid'));
     setColor('#92a2a8')
   }
@@ -25,10 +28,16 @@ function TrackItem (props) {
   function handleSubmit (e) {
     e && e.preventDefault();
     const userName = localStorage.getItem('userName');
-    if (trackId && rating && userName) InsertRating({ userName, trackId, rating });
+    if (!rating) return;
+    if (trackId && userName) insertRating({ userName, trackId, rating });
     setTrackId('');
-    setRating('Rating stored');
+    setButtonLabel('Rating stored: ');
   }
+
+  const btnClass = classNames({
+    rate_button: true,
+    'rate_button_disabled': !rating
+  });
 
   return (
     <div>
@@ -55,9 +64,10 @@ function TrackItem (props) {
             <button
               style={{ background: color }}
               type='submit'
-              className='rate_button'
+              className={btnClass}
+              disabled={!rating}
               data-testid="submitButton"
-              onClick={() => { OnClickEvent() }}>{rating}</button>
+              onClick={() => { OnClickEvent() }}>{buttonLabel}{rating}</button>
           </form>
         </div>
       </div>
