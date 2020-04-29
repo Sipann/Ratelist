@@ -6,89 +6,13 @@ body {
     background-color: #282c34;
 }
 
-.home_header_container {
-    z-index: 2;
-    background-color: #282c34;
-    width: 100%;
-    height: 100px;
-    display: flex;
-    flex-direction: column;
-    position:fixed;
-    justify-content: center;
-    align-items: center;
+.home-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
 }
 
-.nav_container {
-    display: flex;
-    justify-content: space-between;
-    width: 320px;
-    margin-top: 30px;
-    margin-bottom: 25px;
-}
-
-.myRatings_button_ {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 20px;
-    background-color: rgb(241, 112, 123);
-    border: 1px solid white;
-    text-decoration: none;
-    font-size: 15px;
-    color: white
-}
-
-.searchRate_button_ {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 20px;
-    text-decoration: none;
-    border: 1px solid white;
-    font-size: 15px;
-    color: white
-}
-
-.searchRate_button_:hover {
-    border: 1px solid rgb(241, 112, 123);
-    color: rgb(241, 112, 123)
-}
-
-.soulmates_button_ {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 20px;
-    border: 1px solid white;
-    text-decoration: none;
-    font-size: 15px;
-    color: white
-}
-
-.soulmates_button_:hover {
-    border: 1px solid rgb(241, 112, 123);
-    color: rgb(241, 112, 123)
-}
-
-.ratings_container {
-    z-index: 1;
-    position: absolute;
-    margin-top: 100px;
-    width: 100%;
-    overflow: scroll;
-    scroll-behavior: smooth;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.ratings_container::-webkit-scrollbar  {
-  display: none;
-}
-
-.no_content {
+.no-content {
   color: white;
 }

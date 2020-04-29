@@ -2,7 +2,6 @@ import React from 'react';
 
 import './RatedItem.css';
 
-
 function RatedItem (props) {
 
   return (

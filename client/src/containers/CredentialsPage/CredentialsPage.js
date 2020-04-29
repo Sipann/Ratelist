@@ -1,7 +1,6 @@
 import React from 'react';
-import { Redirect, Route, BrowserRouter, useLocation, useParams } from 'react-router-dom';
+import { Redirect, Route, BrowserRouter } from 'react-router-dom';
 import SearchRatePage from '../SearchRatePage/SearchRatePage';
-import { createBrowserHistory } from "history";
 
 function Credentials () {
 
@@ -14,14 +13,12 @@ function Credentials () {
   localStorage.setItem('token', token);
   localStorage.setItem('userName', userName);
 
-
   return (
     <BrowserRouter>
       <Route exact path="/searchRate" component={SearchRatePage} />
       <Redirect to="/searchRate" />
     </BrowserRouter>
   );
-
 
 }
 

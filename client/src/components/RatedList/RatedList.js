@@ -5,10 +5,11 @@ import './RatedList.css';
 
 
 function RatedList (props) {
-  const tracks = props.ratedTracks.tracks;
+  const tracks = props.ratedTracks;
+
   return (
     <div className='ratedList' data-testid="ratedList">
-      {tracks.map((track, index) =>
+      {tracks && tracks.map((track, index) =>
         <RatedItem
           track={track}
           key={index}
