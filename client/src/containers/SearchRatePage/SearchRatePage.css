@@ -81,7 +81,12 @@ body {
     z-index: 1;
     position: absolute;
     margin-top: 150px;
-    width: 100vw;
-    overflow: scroll;
+    width: 100%;
+    overflow-x: hidden;
     scroll-behavior: smooth;
+}
+
+.tracks::-webkit-scrollbar,
+.searchRate::-webkit-scrollbar  {
+  display: none;
 }

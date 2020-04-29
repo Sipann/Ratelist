@@ -77,7 +77,11 @@ body {
     z-index: 1;
     position: absolute;
     margin-top: 100px;
-    width: 100vw;
+    width: 100%;
     overflow: scroll;
     scroll-behavior: smooth;
+}
+
+.ratings_container::-webkit-scrollbar  {
+  display: none;
 }
