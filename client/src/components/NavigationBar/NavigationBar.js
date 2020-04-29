@@ -3,7 +3,7 @@ import React from 'react';
 import './NavigationBar.css';
 import { Link } from "react-router-dom";
 
-function NavigationBar (props) {
+function NavigationBar () {
 
   return (
     <nav className='nav-container'>

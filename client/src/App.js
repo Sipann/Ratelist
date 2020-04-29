@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {
   BrowserRouter as Router,
-  Route
+  Route,
 } from "react-router-dom";
 
 import CredentialsPage from './containers/CredentialsPage/CredentialsPage';
@@ -29,7 +29,7 @@ function App () {
         <Route exact path='/credentials' component={CredentialsPage} />
         <Route exact path='/home' render={() => <HomePage rateList={rateList} isEmpty={isEmpty} />} />
         <Route exact path='/searchRate'
-          render={() => <SearchRatePage updateList={updateList} updateEmpty={updateEmpty}  />} />
+          render={() => <SearchRatePage updateList={updateList} updateEmpty={updateEmpty} />} />
       </Router>
     </div>
   );

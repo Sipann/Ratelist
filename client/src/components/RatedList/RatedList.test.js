@@ -8,10 +8,10 @@ import { mockRatedTracks } from '../../__mocks__/SpotifyTracksItems';
 
 // smoke test
 it('renders withoug crashing', () => {
-  render(<RatedList ratedTracks={mockRatedTracks} />);
+  render(<RatedList ratedTracks={mockRatedTracks.tracks} />);
 });
 
 it('renders as many RatedItem components as there are tracks provided to RatedList', () => {
-  const { getByTestId } = render(<RatedList ratedTracks={mockRatedTracks} />);
+  const { getByTestId } = render(<RatedList ratedTracks={mockRatedTracks.tracks} />);
   expect(getByTestId('ratedList').children.length).toBe(mockRatedTracks.tracks.length);
 });

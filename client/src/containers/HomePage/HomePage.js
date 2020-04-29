@@ -8,13 +8,13 @@ import './HomePage.css';
 function HomePage (props) {
 
   return (
-    <div className="home-page-container">
+    < div className="home-page-container" >
       <NavigationBar />
       <div className='ratings-container'>
         {(props.isEmpty) && <div className="no-content">You have not rated any tracks yet.</div>}
-        {(props.rateList) && <RatedList className='rated-list' ratedTracks={props.rateList} />}
+        {(props.rateList) && <RatedList data-testid="ratedList" className='rated-list' ratedTracks={props.rateList} />}
       </div>
-    </div>
+    </div >
   );
 }
 
