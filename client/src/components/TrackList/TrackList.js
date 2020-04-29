@@ -8,10 +8,11 @@ function TrackList (props) {
   let tracks = props.tracks.tracks.items
   return (
     <div data-testid="trackList">
-      {tracks.map((track, index) =>
+      {tracks.map(track =>
         <TrackItem
           track={track}
-          key={index}
+          key={track.id}
+          updateState={props.updateState}
         />)}
     </div>)
 }

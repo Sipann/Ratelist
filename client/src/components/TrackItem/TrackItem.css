@@ -66,22 +66,21 @@ img {
 }
 
 .rate_button {
-    align-self: center;
-    color: white;
-    font-size: 11px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 20px;
-    border:none;
-    outline: none;
-    width: 100px;
-    background-color: rgb(156, 156, 156);
+  align-self: center;
+  color: white;
+  font-size: 11px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 20px;
+  border:none;
+  outline: none;
+  background-color: rgb(156, 156, 156);
 }
 
 .rate_button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .rate_button.rate_button_disabled:hover {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 
 import { insertRating } from '../../services/dbService';
@@ -9,8 +9,7 @@ function TrackItem (props) {
 
   const [color, setColor] = useState('rgb(73, 162, 218)');
   const [borderColor, SetBorderColor] = useState('1px solid white')
-  const [trackId, setTrackId] = useState('');
-  const [rating, setRating] = useState(null);
+  const [rating, setRating] = useState(5);
   const [buttonLabel, setButtonLabel] = useState('Select Rating');
 
   function OnClickEvent () {
@@ -21,23 +20,39 @@ function TrackItem (props) {
   const handleChange = (e) => {
     setRating(e.target.value);
     setButtonLabel('Rate: ');
-    setTrackId(e.target.getAttribute('data-trackid'));
     setColor('#92a2a8')
   }
 
-  function handleSubmit (e) {
+  async function handleSubmit (e) {
     e && e.preventDefault();
     const userName = localStorage.getItem('userName');
     if (!rating) return;
-    if (trackId && userName) insertRating({ userName, trackId, rating });
-    setTrackId('');
-    setButtonLabel('Rating stored: ');
+    else {
+      await insertRating({ userName, trackId: props.track.id, rating })
+      props.updateState()
+      setButtonLabel('Rating stored: ');
+    }
+
   }
 
   const btnClass = classNames({
     rate_button: true,
     'rate_button_disabled': !rating
   });
+
+  useEffect(() => {
+    function markAsRated () {
+      if (props.track.hasOwnProperty('rating')) {
+        setRating(props.track.rating);
+        setButtonLabel('Already Rated: ');
+      }
+    }
+    markAsRated();
+  }, [])
+
+  const displayedRating = buttonLabel === 'Select Rating'
+    ? buttonLabel
+    : `${buttonLabel}${rating}`;
 
   return (
     <div>
@@ -57,6 +72,7 @@ function TrackItem (props) {
               id='rating'
               min='0'
               max='10'
+              value={rating}
               data-testid="inputField"
               data-trackid={props.track.id}
               onChange={handleChange}
@@ -67,7 +83,7 @@ function TrackItem (props) {
               className={btnClass}
               disabled={!rating}
               data-testid="submitButton"
-              onClick={() => { OnClickEvent() }}>{buttonLabel}{rating}</button>
+              onClick={() => { OnClickEvent() }}>{displayedRating}</button>
           </form>
         </div>
       </div>
