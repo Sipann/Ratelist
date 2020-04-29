@@ -80,8 +80,15 @@ body {
     width: 100%;
     overflow: scroll;
     scroll-behavior: smooth;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .ratings_container::-webkit-scrollbar  {
   display: none;
+}
+
+.no_content {
+  color: white;
 }

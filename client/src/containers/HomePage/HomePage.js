@@ -9,16 +9,18 @@ import './HomePage.css';
 
 function HomePage () {
   const [rateList, setRateList] = useState(null);
+  const [isEmpty, setIsEmpty] = useState(true);
 
   async function getTracksMetadata () {
     const res = await getRatingsByUser();
-    const spotifyTrackList = await getTracks(res.map(i => i.trackId));
+    if (!res.length) return;
 
+    const spotifyTrackList = await getTracks(res.map(i => i.trackId));
     for (let i = 0; i < spotifyTrackList.tracks.length; i++) {
       const obj = res.find(track => track.trackId === spotifyTrackList.tracks[i].id);
       spotifyTrackList.tracks[i].rating = obj.rating;
     }
-
+    setIsEmpty(false);
     setRateList(spotifyTrackList);
   }
 
@@ -36,6 +38,7 @@ function HomePage () {
         </nav>
       </header>
       <div className='ratings_container'>
+        {(isEmpty) && <div className="no_content">You have not rated any tracks yet.</div>}
         {(rateList) && <RatedList className='rated_list' ratedTracks={rateList} />}
       </div>
     </div>
