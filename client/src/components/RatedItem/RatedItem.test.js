@@ -16,7 +16,3 @@ it('renders RatedItem component with proper track props', async () => {
   const { getByText } = render(<RatedItem track={fakeTrack} />);
   expect(getByText('Avant toi')).toBeInTheDocument();
 });
-
-// it('does not display when no track props is passed', async () => {
-  // expect(render(<RatedItem />)).toThrow();
-// });
