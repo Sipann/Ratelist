@@ -1,6 +1,5 @@
 import React from 'react';
-import { Redirect, Route, BrowserRouter } from 'react-router-dom';
-import SearchRatePage from '../SearchRatePage/SearchRatePage';
+import { Redirect } from 'react-router-dom';
 
 function Credentials () {
 
@@ -14,10 +13,7 @@ function Credentials () {
   localStorage.setItem('userName', userName);
 
   return (
-    <BrowserRouter>
-      <Route exact path="/searchRate" component={SearchRatePage} />
-      <Redirect to="/searchRate" />
-    </BrowserRouter>
+    <Redirect to="/searchRate" />
   );
 
 }

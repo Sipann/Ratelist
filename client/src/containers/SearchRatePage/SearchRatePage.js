@@ -9,7 +9,8 @@ import NavigationBar from '../../components/NavigationBar/NavigationBar';
 
 import './SearchRatePage.css';
 
-function SearchRate ({ updateEmpty, updateList }) {
+
+function SearchRate (props) {
   const [tracks, setTracks] = useState(null);
   const [rateList, setRateList] = useState([]);
 
@@ -40,8 +41,8 @@ function SearchRate ({ updateEmpty, updateList }) {
       spotifyTrackList.tracks[i].rating = obj.rating;
     }
 
-    updateEmpty(false);
-    updateList(spotifyTrackList);
+    props.updateList(spotifyTrackList);
+    props.updateEmpty(false);
     setRateList(spotifyTrackList);
   }
 
